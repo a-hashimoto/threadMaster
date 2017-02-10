@@ -8,11 +8,37 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.a_hashimoto.threadmaster.MainActivity">
+    tools:context="com.example.a_hashimoto.threadmaster.MainActivity"
+    android:orientation="vertical">
 
 
-    <Button
-        android:layout_width="@dimen/button_size_width"
-        android:layout_height="@dimen/button_size_height" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/thread_button"
+            android:layout_width="@dimen/button_size_width"
+            android:layout_height="@dimen/button_size_height"
+            android:visibility="visible"
+            android:text="@string/button_text1"
+            />
+
+        <Button
+            android:id="@+id/thread_button2"
+            android:layout_width="@dimen/button_size_width"
+            android:layout_height="@dimen/button_size_height"
+            android:visibility="visible"
+            android:text="@string/button_text2"/>
+
+    </LinearLayout>
+
+
+    <fragment
+        android:name="com.example.a_hashimoto.threadmaster.fragment.TabFragment"
+        android:id="@+id/tab_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

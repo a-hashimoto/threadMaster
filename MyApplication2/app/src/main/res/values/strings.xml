@@ -1,3 +1,15 @@
 <resources>
+
+    <!-- title -->
     <string name="app_name">ThreadMaster</string>
+
+
+    <!-- mainActivity -->
+    <string name="button_text1">one</string>
+    <string name="button_text2">two</string>
+
+
+    <!-- tabFragment -->
+    <string name="button_text3">fragment</string>
+
 </resources>
