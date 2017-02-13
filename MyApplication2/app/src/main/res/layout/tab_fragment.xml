@@ -7,7 +7,7 @@
         android:id="@+id/fragment_button"
         android:layout_width="@dimen/button_size_width"
         android:layout_height="@dimen/button_size_height"
-        android:text="@string/button_text3"/>
+        android:text="@string/button_text_fragment"/>
 
 
 

@@ -7,9 +7,11 @@
     <!-- mainActivity -->
     <string name="button_text1">one</string>
     <string name="button_text2">two</string>
+    <string name="button_text3">three</string>
+
 
 
     <!-- tabFragment -->
-    <string name="button_text3">fragment</string>
+    <string name="button_text_fragment">fragment</string>
 
 </resources>

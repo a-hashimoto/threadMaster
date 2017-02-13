@@ -9,11 +9,15 @@ import android.view.animation.LayoutAnimationController;
 
 import com.example.a_hashimoto.threadmaster.R;
 
+import butterknife.OnClick;
+
 /**
  * Created by hashimotoakira on 2017/02/10.
  */
 
 public class TabFragment extends Fragment {
+
+
     @Override
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
