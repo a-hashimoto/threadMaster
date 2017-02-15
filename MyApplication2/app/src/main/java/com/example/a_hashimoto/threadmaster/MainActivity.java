@@ -1,10 +1,13 @@
 package com.example.a_hashimoto.threadmaster;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,11 +37,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        ImageView imageView = (ImageView)findViewById(R.id.image);
+        imageView.setImageResource(R.drawable.kemono);
     }
 
     @OnClick(R.id.thread_button)
     public void setTabFragment() {
         tabFragment.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, SubActivity.class);
+        ImageView IV = (ImageView)findViewById(R.id.image);
+        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this, IV, "image").toBundle());
     }
 
     @OnClick(R.id.thread_button2)

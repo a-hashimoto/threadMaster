@@ -5,11 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.LayoutAnimationController;
 
 import com.example.a_hashimoto.threadmaster.R;
-
-import butterknife.OnClick;
 
 /**
  * Created by hashimotoakira on 2017/02/10.
