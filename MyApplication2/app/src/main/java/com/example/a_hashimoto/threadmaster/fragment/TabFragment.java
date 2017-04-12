@@ -26,4 +26,7 @@ public class TabFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.tab_fragment, container, false);
     }
+
+    public void doDelete(){
+    }
 }

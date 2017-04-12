@@ -13,5 +13,6 @@
 
     <!-- tabFragment -->
     <string name="button_text_fragment">fragment</string>
+    <string name="search_string">検索</string>
 
 </resources>

@@ -1,22 +1,19 @@
 package com.example.a_hashimoto.threadmaster;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Observable;
-import rx.Observer;
-import rx.Subscriber;
+import butterknife.Unbinder;
 
 public class MainActivity extends AppCompatActivity {
+
 
 
     @BindView(R.id.thread_button)
@@ -30,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.tab_fragment)
     View tabFragment;
+//
+//    @BindView(R.id.image_view)
+//    ImageView image;
 
 
     @Override
@@ -37,114 +37,43 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        ImageView imageView = (ImageView)findViewById(R.id.image);
-        imageView.setImageResource(R.drawable.kemono);
-    }
-
-    @OnClick(R.id.thread_button)
-    public void setTabFragment() {
-        tabFragment.setVisibility(View.VISIBLE);
-        Intent intent = new Intent(this, SubActivity.class);
-        ImageView IV = (ImageView)findViewById(R.id.image);
-        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this, IV, "image").toBundle());
-    }
-
-    @OnClick(R.id.thread_button2)
-    public void deleteTabFragment() {
-        tabFragment.setVisibility(View.INVISIBLE);
-    }
-
-    static boolean enabled = true;
-    private static final Runnable ENABLE_AGAIN = new Runnable() {
-        @Override
-        public void run() {
-            Log.v("5.run:currentThread", Thread.currentThread().getName());
-            enabled = true;
-        }
-
-        ;
-    };
-
-    @OnClick(R.id.thread_button3)
-    public void onClick() {
-
-        Log.v("0", "0");
-        if (enabled) {
-            Log.v("1.OnClick: currentThread", Thread.currentThread().getName());
-            enabled = false;
-            new Handler().postDelayed(func2, 3000);
-        }
-    }
-
-    private final Runnable func2 = new Runnable() {
-        @Override
-        public void run() {
-
-            doClick();
-
-            findViewById(R.id.thread_button3).post(ENABLE_AGAIN);
-        }
-    };
-
-    public void doClick() {
-        Observable<String> observableGreeting =
-                Observable.create(new Observable.OnSubscribe<String>() {
-                    @Override
-                    public void call(Subscriber<? super String> subscriber) {
-                        //　購読が解除されている場合は処理をやめる
-                        if (subscriber.isUnsubscribed()) {
-                            return;
-                        }
-
-                        //　1回目の通知をする
-                        try {
-                            Thread.sleep(3000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        subscriber.onNext("Hello,World!");
-
-
-                        Log.v("3.subscriber: currentThread", Thread.currentThread().getName());
-
-                        //　購読解除されていない場合
-                        if (!subscriber.isUnsubscribed()) {
-                            //　完了したことを通知する
-                            subscriber.onCompleted();
-                        }
-                    }
-                });
-
-        // Observableを購読し処理を開始する
-        observableGreeting.subscribe(new Observer<String>() {
+        Button3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCompleted() {
+            public void onClick(View v) {
 
-                //　Observableからのデータをそのまま標準出力する
-                Log.v("4.onCompleted:currentThread", Thread.currentThread().getName() + ": 完了しました");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                //　Observableからのデータをそのまま標準出力する
-                Log.v("onError:currentThread", Thread.currentThread().getName() + ": Error");
-            }
-
-            @Override
-            public void onNext(String item) {
-                //　実行しているThread名の取得
-                new Handler().postDelayed(func, 3000);
             }
         });
     }
 
-    private final Runnable func = new Runnable() {
-        @Override
-        public void run() {
-            String threadName = Thread.currentThread().getName();
-            //　Observableからのデータをそのまま標準出力する
-            Log.v("2.onNext:currentThread", Thread.currentThread().getName() + ": ");
+    @Override
+    protected void onDestroy() {
+        new Unbinder;
+        super.onDestroy();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.search_bar) {
+            Intent intent = new Intent(this, SearchableActivity.class);
+            startActivity(intent);
         }
-    };
+        return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick(R.id.thread_button)
+    public void goToSearchableActivity() {
+        tabFragment.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, SearchableActivity.class);
+        startActivity(intent);
+    }
+
+
+
+
 }
